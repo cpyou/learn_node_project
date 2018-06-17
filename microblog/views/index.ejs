@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NodeJs留言板</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    
+
+  </head>
+  <body>
+    <h1>NodeJs留言板</h1>
+    <h3>发表留言</h3>
+    <form method="post" action="/add_msg">
+        你的名字:&nbsp;&nbsp;<input name="username" type="text"><br/><br/>
+        留言内容:&nbsp;&nbsp;<textarea name="content"></textarea><br/><br/>
+        <input type="submit" value="发表留言"/>
+    </form>
+    <h3>留言版</h3>
+    <hr/>
+    <% for(var i = messages.length - 1; i>=0; i--) {%> <!-- ejs for循环输出留言板内容 -->
+    <b>名字:</b>&nbsp;&nbsp;&nbsp;&nbsp;<%=messages[i].username %><br/>
+    <b>内容:</b><br/>
+    <%=messages[i].content %><br/>
+    <a href="/edit?id=<%=messages[i].id %>">编辑留言</a>&nbsp;&nbsp;&nbsp;<a href="/del_msg?id=<%=messages[i].id %>">删除留言</a>
+    <hr/>
+    <% } %>
+    <table id="mytable" width="100%" class="display" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Rendering engine</th>
+                        <th>Browser</th>
+                        <th>Platform(s)</th>
+                        <th>Engine version</th>
+                        <th>CSS grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="odd gradeX">
+                        <td>Trident</td>
+                        <td>Internet Explorer 4.0</td>
+                        <td>Win 95+</td>
+                        <td class="center">4</td>
+                        <td class="center">X</td>
+                    </tr>
+                      </tbody>
+                </table>
+  </body>
+  <script type="text/javascript">
+    var data = [
+        ['1', '2', '3', '4', '5'],
+        ['1', '2', '3', '4', '5'],
+    ]
+$(document).ready(function(){
+    $('#mytable').DataTable({
+         "ordering": false,
+         "data": data,
+    });
+});
+</script>
+</html>
