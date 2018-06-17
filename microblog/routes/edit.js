@@ -5,6 +5,7 @@ var Message = require('../model/message');
 
 //查找一个留言
 router.get('/', function(req, res, next) {
+    logger.info('查找一个留言', req.body, res)
     //如果没有id或者id为空,直接返回
     if (req.query.id == undefined || req.query.id == '') {
         res.render('404', {});
