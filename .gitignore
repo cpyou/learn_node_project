@@ -1,0 +1,12 @@
+microblog/node_modules
+logs/*.log
+logs/*/*.log
+log/*.log
+log/*/*.log
+.vscode
+.idea
+.DS_store
+public/tmp
+bin/logs
+logs
+logs/*
